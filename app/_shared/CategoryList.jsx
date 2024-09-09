@@ -1,7 +1,7 @@
 export default [
     {
         id:1,
-        name:'Programming',
+        name:'Coding',
         icon:'/developer.svg',
         prompt:''
     },
