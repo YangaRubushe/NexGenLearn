@@ -7,11 +7,11 @@ function TopicDescription() {
     <div className='mx-20 lg:mx-44'>
         {/** Input topic */}
         <div>
-            <label>Write the topic for which you want to generate a course</label>
+            <label>💡Write the topic for which you want to generate a course</label>
             <Input placeholder={'Topic'} />
         </div>
         <div>
-            <label>Tell us more about your topic, what you want to be included in the (Optional) </label>
+            <label>📝Tell us more about your topic, what you want to be included in the (Optional) </label>
             <Textarea placeholder="About your course"/>
         </div>
         
