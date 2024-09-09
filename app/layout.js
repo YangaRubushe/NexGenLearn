@@ -1,15 +1,14 @@
+import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ClerkProvider, GoogleOneTap } from "@clerk/nextjs";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+
+// Specify the weights you need for Roboto
+const inter = Roboto({ 
+  subsets: ["latin"], 
+  weight: ["400", "900"]  // Specify the weights you need, e.g., 400 (normal) and 700 (bold)
 });
 
 export const metadata = {
@@ -19,12 +18,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <GoogleOneTap />
+        <body
+          className={inter.className}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
