@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { UserInputContext } from '../../_context/UserInputContext'
 
 function SelectCategory() {
-    const {userCourseInput, setUserCourseInput}=useContext(UserInputContext)
+    const {userCourseInput, setUserCourseInput}=useContext(UserInputContext);
 
     const handleCategoryChange=(category)=>{
         setUserCourseInput(prev=>({
