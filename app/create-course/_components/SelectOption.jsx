@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Select,
     SelectContent,
@@ -7,15 +7,27 @@ import {
     SelectValue,
 } from "../../../components/ui/select"
 import { Input } from '../../../components/ui/input';
+import { UserInputContext } from '../../_context/UserInputContext';
 
 
 function SelectOption() {
+
+    const {userCourseInput, setUserCourseInput}=useContext(UserInputContext);
+
+    const handleInputChange=(fieldName,value)=>{
+      setUserCourseInput(prev=>({
+        ...prev,
+        [fieldName]:value
+      }))
+      
+    }
+
     return (
         <div className='px-10 md:px-20 lg:px-44'>
             <div className='grid grid-cols-2 gap-10'>
                 <div>
                     <label className='text-sm'>🎓Difficulty Level</label>
-                    <Select>
+                    <Select onValueChange={(value)=>handleInputChange('level', value)}>
                         <SelectTrigger className="">
                             <SelectValue placeholder="Select" />
                         </SelectTrigger>
@@ -28,7 +40,7 @@ function SelectOption() {
                 </div>
                 <div>
                     <label className='text-sm'>⏱️Course Duration</label>
-                    <Select>
+                    <Select onValueChange={(value)=>handleInputChange('duration', value)}>
                         <SelectTrigger className="">
                             <SelectValue placeholder="Select" />
                         </SelectTrigger>
@@ -41,7 +53,7 @@ function SelectOption() {
                 </div>
                 <div>
                     <label className='text-sm'>🎞️Include Video</label>
-                    <Select>
+                    <Select  onValueChange={(value)=>handleInputChange('displayVideo', value)}>
                         <SelectTrigger className="">
                             <SelectValue placeholder="Select" />
                         </SelectTrigger>
@@ -53,7 +65,10 @@ function SelectOption() {
                 </div>
                 <div>
                     <label className='text-sm'>📖No. of Chapters</label>
-                    <Input type="number" />
+                    <Input type="number" 
+                    
+                    onChange={(event)=>handleInputChange('noOfChapter', event.target.value)}
+                    />
                 </div>
 
 

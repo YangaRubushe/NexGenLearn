@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useContext } from 'react';
 import { Input } from '../../../components/ui/input';  // Correct import
 import { Textarea } from '../../../components/ui/textarea'
@@ -22,12 +22,14 @@ function TopicDescription() {
         <div>
             <label>💡Write the topic for which you want to generate a course</label>
             <Input placeholder={'Topic'} className="h-14 text-xl" 
+            defaultValue = {userCourseInput?.topic}
             onChange={(e)=>handleInputChange('topic', e.target.value)}
             />
         </div>
         <div>
             <label>📝Tell us more about your topic, what you want to be included in the (Optional) </label>
             <Textarea placeholder="About your course" className = "h-24 text-xl"
+            defaultValue = {userCourseInput?.description}
             onChange={(e)=>handleInputChange('description', e.target.value)}
 
             />
