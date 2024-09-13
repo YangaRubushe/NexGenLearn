@@ -1,36 +1,27 @@
-import React from 'react'
+"use client";
+
+import React from "react";
 import {
     AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
     AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "../../../@/components/ui/alert-dialog"
-
+    AlertDialogHeader
+} from "../../../@/components/ui/alert-dialog";
 
 function LoadingDialog({ loading }) {
     return (
         <AlertDialog open={loading}>
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete your account
-                        and remove your data from our servers.
-                    </AlertDialogDescription>
+            <AlertDialogContent className="bg-transparent shadow-none border-none"> {/* Fully transparent background */}
+                <AlertDialogHeader className="flex items-center justify-center h-screen">
+                    <div className="flex space-x-2 justify-center items-center">
+                        <span className="sr-only">Loading...</span>
+                        <div className="h-8 w-8 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                        <div className="h-8 w-8 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                        <div className="h-8 w-8 bg-primary rounded-full animate-bounce"></div>
+                    </div>
                 </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Continue</AlertDialogAction>
-                </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
-
-    )
+    );
 }
 
-export default LoadingDialog
+export default LoadingDialog;
