@@ -27,7 +27,8 @@ function SelectOption() {
             <div className='grid grid-cols-2 gap-10'>
                 <div>
                     <label className='text-sm'>🎓Difficulty Level</label>
-                    <Select onValueChange={(value)=>handleInputChange('level', value)}>
+                    <Select onValueChange={(value)=>handleInputChange('level', value)}
+                        defaultValue={userCourseInput?.level}>
                         <SelectTrigger className="">
                             <SelectValue placeholder="Select" />
                         </SelectTrigger>
@@ -40,7 +41,9 @@ function SelectOption() {
                 </div>
                 <div>
                     <label className='text-sm'>⏱️Course Duration</label>
-                    <Select onValueChange={(value)=>handleInputChange('duration', value)}>
+                    <Select onValueChange={(value)=>handleInputChange('duration', value)}
+                        defaultValue={userCourseInput?.duration}
+                        >
                         <SelectTrigger className="">
                             <SelectValue placeholder="Select" />
                         </SelectTrigger>
@@ -53,7 +56,9 @@ function SelectOption() {
                 </div>
                 <div>
                     <label className='text-sm'>🎞️Include Video</label>
-                    <Select  onValueChange={(value)=>handleInputChange('displayVideo', value)}>
+                    <Select  onValueChange={(value)=>handleInputChange('displayVideo', value)}
+                        defaultValue={userCourseInput?.displayVideo}
+                        >
                         <SelectTrigger className="">
                             <SelectValue placeholder="Select" />
                         </SelectTrigger>
@@ -66,7 +71,7 @@ function SelectOption() {
                 <div>
                     <label className='text-sm'>📖No. of Chapters</label>
                     <Input type="number" 
-                    
+                    defaultValue={userCourseInput?.noOfChapter}
                     onChange={(event)=>handleInputChange('noOfChapter', event.target.value)}
                     />
                 </div>
