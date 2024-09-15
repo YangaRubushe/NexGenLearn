@@ -12,14 +12,14 @@ import {db} from '../../configs/db'
 import uuid4 from 'uuid4';
 import { CourseList } from '../../configs/schema';
 import { useUser } from '@clerk/nextjs';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 function CreateCourse() {
 
     const {userCourseInput, setUserCourseInput}=useContext(UserInputContext)
     const [loading,setLoading]=useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const {user}=useUser();
-
+    const router=useRouter();
     useEffect(()=>{
         console.log(userCourseInput);
     },[userCourseInput])
@@ -92,8 +92,8 @@ function CreateCourse() {
         })
 
         console.log("Finish");
-
         setLoading(false);
+        router.replace('/create-course/'+id)
     }
     return (
         <div>
