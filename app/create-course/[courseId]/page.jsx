@@ -5,7 +5,8 @@ import { CourseList } from '../../../configs/schema'
 import { and, eq } from 'drizzle-orm'
 import { useUser } from '@clerk/nextjs'
 import CourseBasicInfo from './_components/CourseBasicInfo'
-
+import CourseDetail from './_components/CourseDetail'
+import ChapterList from './_components/ChapterList'
 
 function CourseLayout({ params }) {
 
@@ -30,8 +31,9 @@ function CourseLayout({ params }) {
             <CourseBasicInfo course={course}/>
 
             {/* Course Detail */}
-
+            <CourseDetail course={course} />
             {/* List of Lesson */}
+            <ChapterList course={course} />
 
         </div>
     )
