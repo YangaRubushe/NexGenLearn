@@ -21,7 +21,7 @@ function ChapterList({ course }) {
               <p className='flex gap-2 text-primary items-center'><Clock height={20}/> {chapter.Duration}</p>
             </div>
             <div className='flex items-center justify-center'>
-              <CircleCheck className='text-4xl text-gray-200' />
+              <CircleCheck className='text-4xl text-gray-200 flex-none' />
             </div>
           </div>
         ))}
