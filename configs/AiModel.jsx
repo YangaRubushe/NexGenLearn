@@ -48,42 +48,35 @@ export const GenerateCourseLayout_AI = model.startChat({
 
 export const GenerateChapterContent_AI = model.startChat({
     generationConfig,
-    // safetySettings: Adjust safety settings
-    // See https://ai.google.dev/gemini-api/docs/safety-settings
+ // safetySettings: Adjust safety settings
+ // See https://ai.google.dev/gemini-api/docs/safety-settings
     history: [
-        {
-            role: "user",
-            parts: [
-                { text: "Explain the concept in Detail on Topic:Mastering Tailwind CSS: A Beginner's Guide, Chapter:Customizing Tailwind CSS, in JSON Format with field as title, description detail give step by step guidance, Code Example (HTML code in format) if applicable" },
-            ],
-        },
-        {
-            role: "model",
-            parts: [
-                { text: "```json\n{\n  \"title\": \"Customizing Tailwind CSS\",\n  \"description\": \"Tailwind CSS is incredibly flexible and allows for extensive customization to suit your specific design needs. This chapter will guide you through the process of tailoring Tailwind CSS to create a unique and consistent visual identity for your projects.\",\n  \"details\": [\n    {\n      \"title\": \"Tailwind Configuration File (tailwind.config.js)\",\n      \"description\": \"The heart of Tailwind customization lies in the `tailwind.config.js` file. This file allows you to control various aspects of Tailwind's behavior, including:\",\n      \"codeExample\": \"```javascript\\n/** @type {import('tailwindcss').Config} */\\nmodule.exports = {\\n  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],\\n  theme: {\\n    extend: {\\n      colors: {\\n        'primary': '#007bff', // Define a custom primary color\\n        'secondary': '#6c757d', // Define a custom secondary color\\n      },\\n      fontFamily: {\\n        'sans': ['Roboto', 'sans-serif'], // Define a custom font family\\n      },\\n    },\\n  },\\n  plugins: [],\\n}\\n```\",\n      \"subDetails\": [\n        {\n          \"title\": \"Content\",\n          \"description\": \"Specifies the files that Tailwind should scan for class names. This ensures that your custom classes are properly recognized and applied.\"\n        },\n        {\n          \"title\": \"Theme\",\n          \"description\": \"Defines the visual style of your project. This includes things like colors, spacing, fonts, and more. The `extend` property is crucial for adding your own custom values to the default Tailwind theme.\"\n        },\n        {\n          \"title\": \"Plugins\",\n          \"description\": \"Allows you to extend Tailwind's functionality with third-party plugins. This can enable additional features or modify existing ones.\"\n        }\n      ]\n    },\n    {\n      \"title\": \"Custom Colors\",\n      \"description\": \"Tailwind offers a wide range of built-in colors, but you might need specific shades or entirely new colors. The `colors` property within the `theme.extend` section lets you define your own custom colors.\",\n      \"codeExample\": \"```javascript\\nmodule.exports = {\\n  // ...\\n  theme: {\\n    extend: {\\n      colors: {\\n        'brand-blue': '#007bff', // Define a custom blue color\\n        'brand-green': '#28a745', // Define a custom green color\\n      },\\n    },\\n  },\\n  // ...\\n}\\n```\",\n      \"codeExampleUsage\": \"```html\\n<div class=\\\"bg-brand-blue p-4\\\">Brand Blue Background</div>\\n<div class=\\\"text-brand-green font-bold\\\">Brand Green Text</div>\\n```\"\n    },\n    {\n      \"title\": \"Custom Fonts\",\n      \"description\": \"Beyond the default font families, you can easily incorporate your preferred fonts. The `fontFamily` property lets you specify new font families and assign them unique names for easy reference.\",\n      \"codeExample\": \"```javascript\\nmodule.exports = {\\n  // ...\\n  theme: {\\n    extend: {\\n      fontFamily: {\\n        'roboto': ['Roboto', 'sans-serif'],\\n        'open-sans': ['Open Sans', 'sans-serif'],\\n      },\\n    },\\n  },\\n  // ...\\n}\\n```\",\n      \"codeExampleUsage\": \"```html\\n<h1 class=\\\"font-roboto text-3xl\\\">Roboto Font</h1>\\n<p class=\\\"font-open-sans\\\">Open Sans Font</p>\\n```\"\n    },\n    {\n      \"title\": \"Custom Breakpoints\",\n      \"description\": \"Tailwind's responsive design system works with predefined breakpoints. You can customize these breakpoints to align with your project's specific requirements.\",\n      \"codeExample\": \"```javascript\\nmodule.exports = {\\n  // ...\\n  theme: {\\n    extend: {\\n      screens: {\\n        'xs': '480px', // Define a custom breakpoint for extra small screens\\n        'sm': '640px', // Overwrite the default small breakpoint\\n      },\\n    },\\n  },\\n  // ...\\n}\\n```\",\n      \"codeExampleUsage\": \"```html\\n<div class=\\\"md:hidden\\\">This content is hidden on medium screens and larger.</div>\\n<div class=\\\"xs:block\\\">This content is visible on extra small screens and larger.</div>\\n```\"\n    },\n    {\n      \"title\": \"Customizing Spacing and Sizing\",\n      \"description\": \"Tailwind's `spacing` and `fontSize` properties allow for precise control over spacing and text sizes. You can create custom values to fit your design preferences.\",\n      \"codeExample\": \"```javascript\\nmodule.exports = {\\n  // ...\\n  theme: {\\n    extend: {\\n      spacing: {\\n        'extra-large': '10rem', // Define a custom extra large spacing\\n      },\\n      fontSize: {\\n        'xxs': '0.625rem', // Define a custom extra extra small font size\\n      },\\n    },\\n  },\\n  // ...\\n}\\n```\",\n      \"codeExampleUsage\": \"```html\\n<div class=\\\"p-extra-large\\\">Extra Large Padding</div>\\n<h1 class=\\\"text-xxs\\\">Extra Extra Small Font Size</h1>\\n```\"\n    },\n    {\n      \"title\": \"Creating Custom Utilities\",\n      \"description\": \"Sometimes you need specific styles that don't fit neatly into Tailwind's default utility classes. You can create your own custom utility classes using the `extend` property of the `theme` object.\",\n      \"codeExample\": \"```javascript\\nmodule.exports = {\\n  // ...\\n  theme: {\\n    extend: {\\n      utilities: {\\n        '.custom-shadow': { // Define a custom shadow utility class\\n          boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',\\n        },\\n      },\\n    },\\n  },\\n  // ...\\n}\\n```\",\n      \"codeExampleUsage\": \"```html\\n<div class=\\\"custom-shadow\\\">Custom Shadow</div>\\n```\"\n    }\n  ]\n}\n```" },
-            ],
-        },
+      {
+        role: "user",
+        parts: [
+          {text: "Explain the concept in Detail on Topic:Mastering Tailwind CSS: A Beginner's Guide, Chapter:Introduction to Tailwind CSS, in JSON Format with list of array with field as title, description detail, Code Example (Code field in <precode> format) if applicable'"},
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {text: "```json\n[\n  {\n    \"title\": \"What is Tailwind CSS?\",\n    \"description\": \"Tailwind CSS is a utility-first CSS framework that provides a wide range of pre-defined utility classes that you can use to quickly style your web pages. Instead of writing custom CSS rules, you simply add these classes to your HTML elements to control their appearance. This allows you to create custom designs without having to write a lot of CSS code.\",\n    \"code\": \"\"\n  },\n  {\n    \"title\": \"Key Features of Tailwind CSS\",\n    \"description\": \"Here are some key features of Tailwind CSS that make it a popular choice for web developers:\",\n    \"code\": \"\"\n  },\n  {\n    \"title\": \"Utility-First Approach\",\n    \"description\": \"Tailwind CSS's utility-first approach provides a set of pre-defined utility classes that you can use to style your elements directly in your HTML. This eliminates the need for custom CSS classes and promotes consistent styling throughout your project.\",\n    \"code\": \"\"\n  },\n  {\n    \"title\": \"Customization and Theming\",\n    \"description\": \"Tailwind CSS allows you to customize the framework's default colors, fonts, spacing, and other design elements to fit your brand and project requirements. This allows you to create unique and consistent designs without having to start from scratch.\",\n    \"code\": \"\"\n  },\n  {\n    \"title\": \"Responsiveness and Breakpoints\",\n    \"description\": \"Tailwind CSS makes it easy to create responsive designs by providing utility classes that apply different styles based on screen size. You can define breakpoints to target different devices and ensure your website looks great on all screens.\",\n    \"code\": \"\"\n  },\n  {\n    \"title\": \"Component-Based Design\",\n    \"description\": \"Tailwind CSS encourages a component-based approach to web development. You can create reusable components with their own styles and easily integrate them into your project. This promotes code reusability and makes it easier to maintain your website.\",\n    \"code\": \"\"\n  },\n  {\n    \"title\": \"Tailwind CSS Installation and Configuration\",\n    \"description\": \"To use Tailwind CSS, you need to install it in your project and configure it with your desired settings. This involves using a package manager like npm or yarn to install the necessary dependencies and create a configuration file.\",\n    \"code\": \"\"\n  },\n  {\n    \"title\": \"Example: Styling a Button with Tailwind CSS\",\n    \"description\": \"Here's a simple example of how to style a button using Tailwind CSS:\",\n    \"code\": \"<precode>\\n<button class=\\\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\\\">Click Me</button>\\n</precode>\"\n  },\n  {\n    \"title\": \"Getting Started with Tailwind CSS\",\n    \"description\": \"To get started with Tailwind CSS, visit the official website and follow the instructions to install and configure it. There are also plenty of resources and tutorials available online to help you learn more about the framework.\",\n    \"code\": \"\"\n  }\n]\n```"},
+        ],
+      },
     ],
-});
+  });
 
 // Modify the generateCourseContent function to use the updated AI models
-export async function generateCourseContent() {
-    try {
-        const result = await GenerateCourseLayout_AI.sendMessage("Generate a course layout");
-        const courseLayout = JSON.parse(result.response.text());
-        
-        // Generate content for each chapter
-        const chaptersWithContent = await Promise.all(courseLayout.Chapters.map(async (chapter) => {
-            const chapterResult = await GenerateChapterContent_AI.sendMessage(`Generate content for chapter: ${chapter.ChapterName}`);
-            const chapterContent = JSON.parse(chapterResult.response.text());
-            return { ...chapter, ...chapterContent };
-        }));
-
-        return { ...courseLayout, Chapters: chaptersWithContent };
-    } catch (error) {
-        console.error("Error generating course content:", error);
-        throw error;
-    }
+export async function generateCourseContent(courseName, chapterName) {
+  try {
+    const prompt = `Explain the concept in Detail on Topic:${courseName}, Chapter:${chapterName}, in JSON Format with field as title, description detail, Code Example (HTML code in format with comments on the code) if applicable`;
+    const result = await GenerateChapterContent_AI.sendMessage(prompt);
+    const chapterContent = JSON.parse(result.response.text());
+    return chapterContent;
+  } catch (error) {
+    console.error("Error generating course content:", error);
+    throw error;
+  }
 }
 
 // const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
