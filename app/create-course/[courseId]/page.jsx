@@ -42,14 +42,20 @@ function CourseLayout({ params }) {
 
             if (index<3) {
                 try {
+                    let videoId='';
                     const result = await GenerateChapterContent_AI.sendMessage(PROMPT);
                     console.log(result?.response?.text());
 
                     //Generate Video URL
                     service.getVideos(course?.courseOutput?.CourseName+':'+chapter?.ChapterName).then(resp=>{
                         console.log(resp);
+                        videoId=resp[0]?.id?.videoId;
                     })
                     //Save Chapter Content + Video URL
+                    // await db.insert(CourseList).values({
+
+                    // })
+
                     setLoading(false);
 
                 } catch (e) {
