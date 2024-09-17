@@ -3,14 +3,39 @@ import React, { useState } from 'react'
 import { Puzzle } from 'lucide-react';
 import { Button } from '../../../../components/ui/button';
 import EditCourseBasicInfo from './EditCourseBasicInfo';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { storage} from '../../../../configs/firebaseConfig';
+import { db } from '../../../../configs/db';
+import { CourseList } from '../../../../configs/schema';
+import { eq } from 'drizzle-orm';
 
 
 function CourseBasicInfo({course,refreshData}) {
 
   const [selectedFile,setSelectedFile]=useState();
-  const onFileSelected = (event) => {
+
+  /**
+   * Select file and Upload to Firebase Storage
+   * @param {*} event 
+   */
+  const onFileSelected = async(event) => {
     const file = event.target.files[0];
-    setSelectedFile(URL.createObjectURL(file));
+    if (file) {
+      setSelectedFile(URL.createObjectURL(file));
+
+      const fileName=Date.now()+'.jpg';
+      const storageRef=ref(storage,'ai course/' +  fileName)
+      await uploadBytes(storageRef,file).then((snapshot)=>{
+        console.log('Uploaded')
+      }).then(resp=>{
+        getDownloadURL(storageRef).then(async(downloadUrl)=>{
+          console.log(downloadUrl)
+          await db.update(CourseList).set({
+            courseBanner:downloadUrl
+          }).where(eq(CourseList.id,course?.id))
+        })
+      })
+    }
   }
 
 
