@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Puzzle } from 'lucide-react';
 import { Button } from '../../../../components/ui/button';
 import EditCourseBasicInfo from './EditCourseBasicInfo';
@@ -13,6 +13,13 @@ import { eq } from 'drizzle-orm';
 function CourseBasicInfo({course,refreshData}) {
 
   const [selectedFile,setSelectedFile]=useState();
+
+  useEffect(()=>{
+    if(course?.courseBanner){
+      setSelectedFile(course?.courseBanner)
+    }
+
+  }, [course])
 
   /**
    * Select file and Upload to Firebase Storage

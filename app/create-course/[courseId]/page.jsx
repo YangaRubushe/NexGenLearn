@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { db } from '../../../configs/db'
-import { CourseList } from '../../../configs/schema'
+import { CourseChapter, CourseList } from '../../../configs/schema'
 import { and, eq } from 'drizzle-orm'
 import { useUser } from '@clerk/nextjs'
 import CourseBasicInfo from './_components/CourseBasicInfo'
@@ -12,6 +12,7 @@ import { GenerateChapterContent_AI } from '../../../configs/AiModel'
 import LoadingDialog from '../_components/LoadingDialog'
 import service from '../../../configs/service'
 import { getVideos } from '../../../configs/service'
+import { useRouter } from 'next/navigation'
 
 
 
@@ -20,6 +21,8 @@ function CourseLayout({ params }) {
     const { user } = useUser();
     const [course, setCourse] = useState([]);
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
 
     useEffect(() => {
         params && GetCourse();
@@ -40,21 +43,27 @@ function CourseLayout({ params }) {
             const PROMPT = 'Explain the concept in Detail on Topic:' + course?.courseOutput?.CourseName + ', Chapter:' + chapter?.ChapterName + ', in JSON Format with list of array with field as title, description detail, Code Example (Code field in <precode> format) if applicable';
             console.log(PROMPT);
 
-            if (index<3) {
+            
                 try {
-                    let videoId='';
+                    let videoId = '';
+                    //Generate Video URL
+                    service.getVideos(course?.courseOutput?.CourseName + ':' + chapter?.ChapterName).then(resp => {
+                        console.log(resp);
+                        videoId = resp[0]?.id?.videoId;
+                    })
                     const result = await GenerateChapterContent_AI.sendMessage(PROMPT);
                     console.log(result?.response?.text());
+                    const content = JSON.parse(result?.response?.text());
 
-                    //Generate Video URL
-                    service.getVideos(course?.courseOutput?.CourseName+':'+chapter?.ChapterName).then(resp=>{
-                        console.log(resp);
-                        videoId=resp[0]?.id?.videoId;
-                    })
+
+
                     //Save Chapter Content + Video URL
-                    // await db.insert(CourseList).values({
-
-                    // })
+                    await db.insert(CourseChapter).values({
+                        chapterId: index,
+                        courseId: course?.courseId,
+                        content: content,
+                        videoId: videoId,
+                    })
 
                     setLoading(false);
 
@@ -62,7 +71,11 @@ function CourseLayout({ params }) {
                     setLoading(false);
                     console.log(e);
                 }
-            }
+                await db.update(CourseList).set({
+                    publish:true
+                })
+                router.replace('/create-course/' + course?.courseId + '/finish')
+            
         });
     }
     return (
