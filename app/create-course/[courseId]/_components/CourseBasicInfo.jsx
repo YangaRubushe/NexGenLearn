@@ -8,18 +8,18 @@ import { storage} from '../../../../configs/firebaseConfig';
 import { db } from '../../../../configs/db';
 import { CourseList } from '../../../../configs/schema';
 import { eq } from 'drizzle-orm';
+import Link from "next/link"
 
-
-function CourseBasicInfo({course,refreshData}) {
-
+function CourseBasicInfo({course,refreshData,edit=true}) {
   const [selectedFile,setSelectedFile]=useState();
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(()=>{
     if(course?.courseBanner){
-      setSelectedFile(course?.courseBanner)
+      setSelectedFile(course?.courseBanner);
     }
-
-  }, [course])
+    setLoading(false); // Set loading to false after course data is set
+  }, [course]);
 
   /**
    * Select file and Upload to Firebase Storage
@@ -45,31 +45,37 @@ function CourseBasicInfo({course,refreshData}) {
     }
   }
 
-
   return (
     <div className='p-10 border rounded-xl shadow-sm mt-5'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-5 items-center'>
-        <div>
-          <h2 className='font-bold text-3xl'>{course?.courseOutput?.CourseName} 
-            <EditCourseBasicInfo  course={course} refreshData={()=>refreshData(true)}/></h2>
-          <p className='text-sm text-gray-400 mt-3'>{course?.courseOutput?.Description}</p>
-          <h2 className='font-medium mt-2 flex gap-2 items-center text-primary'><Puzzle />{course?.category}</h2>
-          <Button className='w-full mt-5'>Start</Button>
+      {loading ? ( // Conditional rendering for loading state
+        [1].map((item,index)=>( 
+          <div key={index} className='w-full mt-5 bg-slate-200 animate-pulse rounded-lg h-[300px]'></div>
+        ))
+      ) : (
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 items-center'>
+          <div>
+            <h2 className='font-bold text-3xl'>{course?.courseOutput?.CourseName} 
+             {edit && <EditCourseBasicInfo  course={course} refreshData={()=>refreshData(true)}/>}</h2>
+            <p className='text-sm text-gray-400 mt-3'>{course?.courseOutput?.Description}</p>
+            <h2 className='font-medium mt-2 flex gap-2 items-center text-primary'><Puzzle />{course?.category}</h2>
+            {!edit && <Link href={'/course/'+course?.courseId+'/start'}>
+            <Button className='w-full mt-5'>Start</Button>
+            </Link>}
+          </div>
+          <div>
+            <label htmlFor='upload-image' className='flex justify-center items-center'>
+            <Image 
+              src={selectedFile?selectedFile: '/2702154.png'} 
+              width={200} 
+              height={200}
+              alt="Course Image"
+              className=' w-full rounded-xl h-[200px] cursor-pointer'
+            />
+            </label>
+           {edit&& <input type='file' id="upload-image" className='opacity-0' onChange={onFileSelected}/>}
+          </div>
         </div>
-        <div >
-          <label htmlFor='upload-image' className='flex justify-center items-center'>
-          <Image 
-            src={selectedFile?selectedFile: '/2702154.png'} 
-            width={200} 
-            height={200}
-            alt="Course Image"
-            className='rounded-xl h-[200px] cursor-pointer'
-          />
-          </label>
-          <input type='file' id="upload-image" className='opacity-0' onChange={onFileSelected}/>
-          
-        </div>
-      </div>
+      )}
     </div>
   )
 }
