@@ -20,7 +20,7 @@ import { Ellipsis } from 'lucide-react';
 function CourseLayout({ params }) {
 
     const { user } = useUser();
-    const [course, setCourse] = useState([]);
+    const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 

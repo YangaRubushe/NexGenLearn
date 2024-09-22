@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import { Puzzle } from 'lucide-react';
+import { LayoutPanelTop } from 'lucide-react';
 import { Button } from '../../../../components/ui/button';
 import EditCourseBasicInfo from './EditCourseBasicInfo';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -57,7 +57,7 @@ function CourseBasicInfo({course,refreshData,edit=true}) {
             <h2 className='font-bold text-3xl'>{course?.courseOutput?.CourseName} 
              {edit && <EditCourseBasicInfo  course={course} refreshData={()=>refreshData(true)}/>}</h2>
             <p className='text-sm text-gray-400 mt-3'>{course?.courseOutput?.Description}</p>
-            <h2 className='font-medium mt-2 flex gap-2 items-center text-primary'><Puzzle />{course?.category}</h2>
+            <h2 className='font-medium mt-2 flex gap-2 items-center text-primary'><LayoutPanelTop />{course?.category}</h2>
             {!edit && <Link href={'/course/'+course?.courseId+'/start'}>
             <Button className='w-full mt-5'>Start</Button>
             </Link>}

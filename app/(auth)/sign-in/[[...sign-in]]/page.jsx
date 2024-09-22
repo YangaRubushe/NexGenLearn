@@ -36,7 +36,7 @@ export default function Page() {
 
             {/* Sign In Form */}
             <div className="mt-8">
-              <SignIn />
+              <SignIn redirectUrl="/dashboard" />
             </div>
 
           </div>
