@@ -31,9 +31,10 @@ function FinishScreen({ params }) {
         setLoading(false);
     };
 
-    const handleTakeCourse = () => {
+    const handleTakeCourse = (e) => {
+        e.preventDefault();
         if (course?.courseId) {
-            router.replace(`/course/${course.courseId}/start`);
+            window.open(`/course/${course.courseId}/start`, '_blank');
         }
     };
 
