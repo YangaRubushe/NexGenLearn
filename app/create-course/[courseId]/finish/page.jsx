@@ -33,7 +33,7 @@ function FinishScreen({ params }) {
 
     const handleTakeCourse = () => {
         if (course?.courseId) {
-            router.push(`/course/${course.courseId}/start`);
+            router.replace(`/course/${course.courseId}/start`);
         }
     };
 
