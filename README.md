@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NexGen Learn
 
-## Getting Started
+NexGen Learn is an innovative platform that empowers users to create courses with the assistance of advanced technologies. Utilizing the Gemini AI API, users can generate course content tailored to their needs. Additionally, the YouTube API allows users to retrieve relevant videos to enhance their learning experience.
 
-First, run the development server:
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Environment Variables](#environment-variables)
+- [Challenges](#challenges)
+- [Learning Objectives](#learning-objectives)
+- [Conclusion](#conclusion)
+- [Contact](#contact)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Overview
+Currently, I am working solo on this project. My background in computer science and software engineering, with a specialization in backend development, helps me bring this vision to life. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
+The main technologies used in this project include:
+- **Next.js**: For building a fast and responsive front-end.
+- **React**: For creating user interfaces.
+- **Tailwind CSS**: For styling.
+- **Gemini API**: For generating course content.
+- **Drizzle**: For database management.
+- **YouTube API**: For integrating educational videos.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
+- Course creation with AI-generated content.
+- Progress tracking for users.
+- Interactive learning modules.
+- User authentication and management via Clerk.
+- Ability to share courses with others.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YangaRubushe/nexgenlearn.git
+   cd nexgenlearn
