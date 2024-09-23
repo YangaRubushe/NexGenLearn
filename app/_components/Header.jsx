@@ -13,7 +13,7 @@ function Header() {
   const isLandingPage = pathname === '/';
 
   return (
-    <div className="flex justify-between items-center p-5 shadow-md">
+    <div className="flex justify-between items-center p-5 shadow-sm">
       <Link href="/">
         <Image src={'/logo.svg'} width={60} height={20} alt="Logo" />
       </Link>
@@ -33,7 +33,7 @@ function Header() {
             <Button variant="outline">Sign In</Button>
           </Link>
           <Link href="/sign-up">
-            <Button>Get Started</Button>
+            <Button className="bg-blue-600">Get Started</Button>
           </Link>
         </div>
       )}
