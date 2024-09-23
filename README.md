@@ -38,3 +38,91 @@ The main technologies used in this project include:
    ```bash
    git clone https://github.com/YangaRubushe/nexgenlearn.git
    cd nexgenlearn
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file from the `.env.example` template:
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Add your environment variables in the `.env` file.
+
+## Usage
+
+To start the development server, run:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to http://localhost:3000.
+
+## Environment Variables
+
+Create a `.env` file in the root of your project and add the following variables:
+
+```
+NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+NEXT_PUBLIC_YOUTUBE_API_KEY=your_youtube_api_key_here
+CLERK_FRONTEND_API=your_clerk_frontend_api_here
+FIREBASE_API_KEY=your_firebase_api_key_here
+FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain_here
+FIREBASE_PROJECT_ID=your_firebase_project_id_here
+```
+
+## Challenges
+
+Some challenges anticipated during development include:
+- Managing time effectively.
+- Ensuring seamless integration of technologies.
+- Debugging issues that arise during development.
+
+## Learning Objectives
+
+My learning objectives for this project include:
+- Mastering full-stack development
+- Understanding AI integration
+- Enhancing my project management skills
+
+## Conclusion
+
+NexGen Learn is set to be a transformative educational platform. I am eager to share my progress and look forward to any feedback or questions you may have.
+
+## Contact
+
+For collaboration or feedback, please reach out to me at:
+- GitHub: YangaRubushe
+- Twitter: YangaRubushe
+- LinkedIn: Yanga Rubushe
+
+## .env.example
+
+```plaintext
+# NexGen Learn Environment Variables
+
+# Gemini AI API Key
+NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+
+# YouTube API Key
+NEXT_PUBLIC_YOUTUBE_API_KEY=your_youtube_api_key_here
+
+# Clerk Frontend API Key for authentication management
+CLERK_FRONTEND_API=your_clerk_frontend_api_here
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+# Firebase Configuration for storing data and images
+FIREBASE_API_KEY=your_firebase_api_key_here
+FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain_here
+FIREBASE_PROJECT_ID=your_firebase_project_id_here
+
+# Add additional environment variables as needed for your application
+NEXT_PUBLIC_DB_CONNECTION_STRING=your_db_url
+NEXT_PUBLIC_HOST_NAME=your_localhost_url
