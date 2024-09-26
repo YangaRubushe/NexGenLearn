@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* White background */
+  --foreground: #171717; /* Dark text color */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff; /* Keep white background in dark mode */
+    --foreground: #171717; /* Keep dark text color in dark mode */
   }
 }
 
@@ -55,26 +55,26 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
+    --background: #ffffff; /* Keep white background in dark mode */
+    --foreground: #171717; /* Keep dark text color in dark mode */
+    --card: #ffffff; /* Keep card background white */
+    --card-foreground: #171717; /* Keep card text dark */
+    --popover: #ffffff; /* Keep popover background white */
+    --popover-foreground: #171717; /* Keep popover text dark */
+    --primary: #171717; /* Dark text for primary elements */
+    --primary-foreground: #ffffff; /* White text for primary foreground */
+    --secondary: #171717; /* Dark text for secondary elements */
+    --secondary-foreground: #ffffff; /* White text for secondary foreground */
+    --muted: #171717; /* Dark muted text */
+    --muted-foreground: #ffffff; /* White muted foreground */
+    --accent: #171717; /* Dark accent text */
+    --accent-foreground: #ffffff; /* White accent foreground */
+    --destructive: 0 62.8% 30.6%; /* Destructive color */
+    --destructive-foreground: #ffffff; /* White text for destructive */
+    --border: 0 0% 14.9%; /* Dark border color */
+    --input: #171717; /* Dark input background */
+    --ring: 0 0% 83.1%; /* Ring color */
+    --chart-1: 220 70% 50%; /* Chart colors */
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
